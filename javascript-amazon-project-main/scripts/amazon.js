@@ -45,10 +45,28 @@ for(let i=0;i<products.length;i++){
         Added
       </div>
 
-      <button class="add-to-cart-button button-primary">
+      <button class="add-to-cart-button button-primary js-add-to-cart" data-product-id="${products[i].id}"
+      data-product-quantity=${1}>
         Add to Cart
       </button>
     </div>
   `;
 };
 document.querySelector('.js-products-grid').innerHTML=productsHTML;
+
+document.querySelectorAll('.js-add-to-cart').forEach(function(button){
+  button.addEventListener('click',function(){
+    const productId=button.dataset.productId;//unique identifier for every product automatically generated formeach object
+    const productQuantity=button.dataset.productQuantity;
+    let flag=1;
+    for(let i=0;i<cart.length;i++){
+      if(cart[i].productId==productId){
+        cart[i].productQuantity++;
+        flag=0;
+        break;
+      }
+    }
+    if(flag===1) cart.push({productId,productQuantity});
+    console.log(cart);
+  });
+});
