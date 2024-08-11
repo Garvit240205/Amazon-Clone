@@ -1,8 +1,10 @@
 import {cart,addToCart} from '../data/cart.js';
 import { products } from '../data/products.js';
+import * as utils from './utils/money.js';
 
 let productsHTML='';
 
+updateCartQuant();//to initially update the cart quantity at home page
 
 for(let i=0;i<products.length;i++){
   productsHTML+=`
@@ -25,7 +27,7 @@ for(let i=0;i<products.length;i++){
       </div>
 
       <div class="product-price">
-      ${(products[i].priceCents/100).toFixed(2)}   <!--to show till 2 decimals-->
+      ${`$${utils.formatCurrency(products[i].priceCents)}`}   <!--to show till 2 decimals-->
       </div>
 
       <div class="product-quantity-container">
@@ -80,6 +82,8 @@ document.querySelectorAll('.js-add-to-cart').forEach(function(button){
     addToCart(productId,productQuantity);
 
     updateCartQuant();
+
+    // console.log(cart);
   });
 });
 
