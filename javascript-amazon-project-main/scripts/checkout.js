@@ -1,4 +1,4 @@
-import {cart} from '../data/cart.js';
+import {cart,saveToStorage} from '../data/cart.js';
 import {products} from '../data/products.js';
 import * as utils from './utils/money.js';
 
@@ -111,7 +111,7 @@ function deleteFromCart(productId){
   cart.forEach((item,index)=>{
     if(item.productId===productId){
       cart.splice(index,1);
-      localStorage.setItem('cart',JSON.stringify(cart));
+      saveToStorage();
       cartIndex=index;
     }
   });

@@ -13,3 +13,7 @@ export function addToCart(productId,productQuantity){
 
   localStorage.setItem('cart', JSON.stringify(cart));
 }
+
+export function saveToStorage(){
+  localStorage.setItem('cart',JSON.stringify(cart));
+}
