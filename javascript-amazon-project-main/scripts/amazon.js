@@ -1,4 +1,9 @@
+import {cart} from '../data/cart.js';
+import { products } from '../data/products.js';
+
 let productsHTML='';
+
+
 for(let i=0;i<products.length;i++){
   productsHTML+=`
     <div class="product-container">
@@ -54,6 +59,7 @@ for(let i=0;i<products.length;i++){
 };
 document.querySelector('.js-products-grid').innerHTML=productsHTML;
 
+
 document.querySelectorAll('.js-add-to-cart').forEach(function(button){
   button.addEventListener('click',function(){
     const productId=button.dataset.productId;//unique identifier for every product automatically generated formeach object
@@ -74,7 +80,7 @@ document.querySelectorAll('.js-add-to-cart').forEach(function(button){
     })
 
     document.querySelector('.js-cart-quantity').innerHTML=cartQuantity;
-    console.log(cart);
+    // console.log(cart);
   });
 });
 
