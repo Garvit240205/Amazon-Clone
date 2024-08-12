@@ -1,10 +1,12 @@
-import {cart,saveToStorage} from '../data/cart.js';
-import {products} from '../data/products.js';
-import * as utils from './utils/money.js';
+import {cart,saveToStorage} from '../../data/cart.js';
+import {products} from '../../data/products.js';
+import * as utils from '../utils/money.js';
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js'; //because dayjs is the dault export of DayJS library
-import {delivery} from './delivery.js';
+import {delivery} from '../delivery.js';
+import renderPaymentSummary from './paymentSummary.js';
 
 let cartHTML='';
+
 
 for(let i=0;i<cart.length;i++){
 
@@ -15,16 +17,19 @@ for(let i=0;i<cart.length;i++){
       return;//no need actually the loop will still go on.
     }
   });
+
   const today=dayjs();
-  const after3=today.add(3,'days');
-  const after7=today.add(7,'days');
-  const datetoday=today.format('dddd, MMMM D');
-  const dateafter3=after3.format('dddd, MMMM D');
-  const dateafter7= after7.format('dddd, MMMM D');
+  let toAdd;
+  if(cart[i].deliveryId==1) toAdd=7;
+  else if(cart[i].deliveryId==2) toAdd=3;
+  else toAdd=0;
+  const after=today.add(toAdd,'days');
+  const dateafter= after.format('dddd, MMMM D');
+
   cartHTML+=`
   <div class="cart-item-container js-cart-item-container-${product.id}">
       <div class="delivery-date js-delivery-date-${product.id}">
-        Delivery date: ${dateafter7}
+        Delivery date: ${dateafter}
       </div>
 
       <div class="cart-item-details-grid">
@@ -55,52 +60,71 @@ for(let i=0;i<cart.length;i++){
           <div class="delivery-options-title">
             Choose a delivery option:
           </div>
-          <div class="delivery-option">
-            <input type="radio" checked
-              class="delivery-option-input js-delivery-option-input-${product.id}" data-radio-id=7
-              name="delivery-option-${product.id}"> <!--so that we can select one radio selector for each product in cart-->
-            <div>
-              <div class="delivery-option-date">
-                ${dateafter7}
-              </div>
-              <div class="delivery-option-price">
-                FREE Shipping
-              </div>
-            </div>
-          </div>
-          <div class="delivery-option">
-            <input type="radio"
-              class="delivery-option-input js-delivery-option-input-${product.id}" data-radio-id=3
-              name="delivery-option-${product.id}">
-            <div>
-              <div class="delivery-option-date">
-                ${dateafter3}
-              </div>
-              <div class="delivery-option-price">
-                $${utils.formatCurrency(delivery[1].priceCents)} - Shipping
-              </div>
-            </div>
-          </div>
-          <div class="delivery-option">
-            <input type="radio"
-              class="delivery-option-input js-delivery-option-input-${product.id}" data-radio-id=0
-              name="delivery-option-${product.id}">
-            <div>
-              <div class="delivery-option-date">
-                ${datetoday}
-              </div>
-              <div class="delivery-option-price">
-                $${utils.formatCurrency(delivery[2].priceCents)} - Shipping
-              </div>
-            </div>
-          </div>
+          ${deliveryOptionsGeneration(product,cart[i])}
         </div>
       </div>
     </div>
   `;
 };
-document.querySelector('.js-order-summary').innerHTML=cartHTML;
 
+function deliveryOptionsGeneration(product,cartItem){
+  let radioHTML='';
+  const today=dayjs();
+  const after3=today.add(3,'days');
+  const after7=today.add(7,'days');
+  const datetoday=today.format('dddd, MMMM D');
+  const dateafter3=after3.format('dddd, MMMM D');
+  const dateafter7= after7.format('dddd, MMMM D');
+  let deliveryId=cartItem.deliveryId;
+  radioHTML+=`
+    <div class="delivery-option">
+      <input type="radio" 
+        ${deliveryId === 1 ? 'checked':''}
+        class="delivery-option-input js-delivery-option-input-${product.id}" data-radio-id=7
+        name="delivery-option-${product.id}"> <!--so that we can select one radio selector for each product in cart-->
+      <div>
+        <div class="delivery-option-date">
+          ${dateafter7}
+        </div>
+        <div class="delivery-option-price">
+          FREE Shipping
+        </div>
+      </div>
+    </div>
+    <div class="delivery-option">
+      <input type="radio" 
+        ${deliveryId === 2 ? 'checked':''}
+        class="delivery-option-input js-delivery-option-input-${product.id}" data-radio-id=3
+        name="delivery-option-${product.id}">
+      <div>
+        <div class="delivery-option-date">
+          ${dateafter3}
+        </div>
+        <div class="delivery-option-price">
+          $${utils.formatCurrency(delivery[1].priceCents)} - Shipping
+        </div>
+      </div>
+    </div>
+    <div class="delivery-option">
+      <input type="radio" 
+        ${deliveryId === 3 ? 'checked':''}
+        class="delivery-option-input js-delivery-option-input-${product.id}" data-radio-id=0
+        name="delivery-option-${product.id}">
+      <div>
+        <div class="delivery-option-date">
+          ${datetoday}
+        </div>
+        <div class="delivery-option-price">
+          $${utils.formatCurrency(delivery[2].priceCents)} - Shipping
+        </div>
+      </div>
+    </div>
+  `;
+  return radioHTML;
+};
+
+document.querySelector('.js-order-summary').innerHTML=cartHTML;
+renderPaymentSummary();
 
 function setDeliveryDate(){
   cart.forEach((item)=>{
@@ -113,8 +137,19 @@ function setDeliveryDate(){
         const dateFinalFormatted=finalDate.format('dddd, MMMM D');
   
         dateHTML+=`${dateFinalFormatted}`
-        console.log(dateHTML);
+        if(after===7){
+          item.deliveryId=1;
+        }
+        else if(after===3){
+          item.deliveryId=2;
+        }
+        else{
+          item.deliveryId=3;
+        }
+        
         document.querySelector(`.js-delivery-date-${item.productId}`).innerHTML=dateHTML;
+        renderPaymentSummary();
+        saveToStorage();
       });
     })
   });
@@ -130,6 +165,8 @@ function emptyCart(){
     localStorage.removeItem('cart');
     cartHTML='';
     document.querySelector('.js-order-summary').innerHTML=cartHTML;
+    cart.length = 0;
+    renderPaymentSummary();
   });
 };
 
@@ -144,12 +181,14 @@ function deleteFromCart(productId){
       cartIndex=index;
     }
   });
-
+  
   document.querySelector(`.js-cart-item-container-${productId}`).remove();//to remove that element from HTML
+  renderPaymentSummary();
 };
 
 document.querySelectorAll('.js-delete-quantity-link').forEach((link)=>{
   link.addEventListener('click',function(){
     deleteFromCart(link.dataset.productId);
+    renderPaymentSummary();
   });
 });
