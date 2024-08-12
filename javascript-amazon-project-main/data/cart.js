@@ -9,11 +9,11 @@ export function addToCart(productId,productQuantity){
       break;
     }
   }
-  if(flag===1) cart.push({productId,productQuantity});
+  if(flag===1) cart.push({productId,productQuantity,deliveryId: 1});
 
   localStorage.setItem('cart', JSON.stringify(cart));
 }
 
 export function saveToStorage(){
   localStorage.setItem('cart',JSON.stringify(cart));
-}
+} 

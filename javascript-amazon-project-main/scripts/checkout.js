@@ -1,6 +1,8 @@
 import {cart,saveToStorage} from '../data/cart.js';
 import {products} from '../data/products.js';
 import * as utils from './utils/money.js';
+import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js'; //because dayjs is the dault export of DayJS library
+import {delivery} from './delivery.js';
 
 let cartHTML='';
 
@@ -13,11 +15,16 @@ for(let i=0;i<cart.length;i++){
       return;//no need actually the loop will still go on.
     }
   });
-
+  const today=dayjs();
+  const after3=today.add(3,'days');
+  const after7=today.add(7,'days');
+  const datetoday=today.format('dddd, MMMM D');
+  const dateafter3=after3.format('dddd, MMMM D');
+  const dateafter7= after7.format('dddd, MMMM D');
   cartHTML+=`
   <div class="cart-item-container js-cart-item-container-${product.id}">
-      <div class="delivery-date">
-        Delivery date: Tuesday, June 21
+      <div class="delivery-date js-delivery-date-${product.id}">
+        Delivery date: ${dateafter7}
       </div>
 
       <div class="cart-item-details-grid">
@@ -50,11 +57,11 @@ for(let i=0;i<cart.length;i++){
           </div>
           <div class="delivery-option">
             <input type="radio" checked
-              class="delivery-option-input"
+              class="delivery-option-input js-delivery-option-input-${product.id}" data-radio-id=7
               name="delivery-option-${product.id}"> <!--so that we can select one radio selector for each product in cart-->
             <div>
               <div class="delivery-option-date">
-                Tuesday, June 21
+                ${dateafter7}
               </div>
               <div class="delivery-option-price">
                 FREE Shipping
@@ -63,27 +70,27 @@ for(let i=0;i<cart.length;i++){
           </div>
           <div class="delivery-option">
             <input type="radio"
-              class="delivery-option-input"
+              class="delivery-option-input js-delivery-option-input-${product.id}" data-radio-id=3
               name="delivery-option-${product.id}">
             <div>
               <div class="delivery-option-date">
-                Wednesday, June 15
+                ${dateafter3}
               </div>
               <div class="delivery-option-price">
-                $4.99 - Shipping
+                $${utils.formatCurrency(delivery[1].priceCents)} - Shipping
               </div>
             </div>
           </div>
           <div class="delivery-option">
             <input type="radio"
-              class="delivery-option-input"
+              class="delivery-option-input js-delivery-option-input-${product.id}" data-radio-id=0
               name="delivery-option-${product.id}">
             <div>
               <div class="delivery-option-date">
-                Monday, June 13
+                ${datetoday}
               </div>
               <div class="delivery-option-price">
-                $9.99 - Shipping
+                $${utils.formatCurrency(delivery[2].priceCents)} - Shipping
               </div>
             </div>
           </div>
@@ -92,8 +99,30 @@ for(let i=0;i<cart.length;i++){
     </div>
   `;
 };
-
 document.querySelector('.js-order-summary').innerHTML=cartHTML;
+
+
+function setDeliveryDate(){
+  cart.forEach((item)=>{
+    document.querySelectorAll(`.js-delivery-option-input-${item.productId}`).forEach((radioitem)=>{
+      radioitem.addEventListener('click',function(){
+        let dateHTML='Delivery date: ';
+        let after=parseInt(this.dataset.radioId);//because we want to point to radioitem not the event object so we cant take input param.
+        const today=dayjs();
+        const finalDate=today.add(after,'days');
+        const dateFinalFormatted=finalDate.format('dddd, MMMM D');
+  
+        dateHTML+=`${dateFinalFormatted}`
+        console.log(dateHTML);
+        document.querySelector(`.js-delivery-date-${item.productId}`).innerHTML=dateHTML;
+      });
+    })
+  });
+}
+
+setDeliveryDate();
+
+
 
 function emptyCart(){
   document.querySelector('.js-empty-cart-button')
