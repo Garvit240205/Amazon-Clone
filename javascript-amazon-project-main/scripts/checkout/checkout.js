@@ -125,6 +125,7 @@ function deliveryOptionsGeneration(product,cartItem){
 
 document.querySelector('.js-order-summary').innerHTML=cartHTML;
 renderPaymentSummary();
+renderCheckoutItemsNumber(cart)
 
 function setDeliveryDate(){
   cart.forEach((item)=>{
@@ -149,6 +150,7 @@ function setDeliveryDate(){
         
         document.querySelector(`.js-delivery-date-${item.productId}`).innerHTML=dateHTML;
         renderPaymentSummary();
+        renderCheckoutItemsNumber(cart)
         saveToStorage();
       });
     })
@@ -167,6 +169,7 @@ function emptyCart(){
     document.querySelector('.js-order-summary').innerHTML=cartHTML;
     cart.length = 0;
     renderPaymentSummary();
+    renderCheckoutItemsNumber(cart)
   });
 };
 
@@ -184,11 +187,17 @@ function deleteFromCart(productId){
   
   document.querySelector(`.js-cart-item-container-${productId}`).remove();//to remove that element from HTML
   renderPaymentSummary();
+  renderCheckoutItemsNumber(cart)
 };
 
 document.querySelectorAll('.js-delete-quantity-link').forEach((link)=>{
   link.addEventListener('click',function(){
     deleteFromCart(link.dataset.productId);
     renderPaymentSummary();
+    renderCheckoutItemsNumber(cart)
   });
 });
+
+function renderCheckoutItemsNumber(cart){
+  document.querySelector('.js-return-to-home-link').innerHTML=`${cart.length} items`
+};
