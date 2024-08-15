@@ -5,12 +5,13 @@ import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js'; //because dayj
 import {delivery} from '../delivery.js';
 import renderPaymentSummary from './paymentSummary.js';
 
+
 let cartHTML='';
 
 
 for(let i=0;i<cart.length;i++){
 
-  let product;
+  let product={};
   products.forEach((item)=>{
     if(item.id===cart[i].productId){
       product=item;
@@ -164,7 +165,7 @@ setDeliveryDate();
 
 
 
-function emptyCart(){
+export function emptyCart(){
   document.querySelector('.js-empty-cart-button')
   .addEventListener('click',function(){
     localStorage.removeItem('cart');
@@ -206,5 +207,10 @@ document.querySelectorAll('.js-delete-quantity-link').forEach((link)=>{
 });
 
 function renderCheckoutItemsNumber(cart){
-  document.querySelector('.js-return-to-home-link').innerHTML=`${cart.length} items`
+  let cartQuantity=0;
+
+  cart.forEach((item)=>{
+    cartQuantity+=item.productQuantity;
+  })
+  document.querySelector('.js-return-to-home-link').innerHTML=`${cartQuantity} items`
 };

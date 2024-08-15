@@ -2,7 +2,9 @@ import {cart} from '../../data/cart.js'
 import { products } from '../../data/products.js';
 import { delivery } from '../delivery.js';
 import { formatCurrency } from '../utils/money.js';
+import {orders,addToOrders} from '../../data/orders.js';
 
+let total=0;
 export default function renderPaymentSummary(){
   let product;
   let totalPrice=0;
@@ -23,7 +25,7 @@ export default function renderPaymentSummary(){
 
   totalBeforeTax+=shippingCost+totalPrice;
   totalAfterTax=totalBeforeTax*(0.1);
-  const total=totalAfterTax+totalBeforeTax;
+  total=totalAfterTax+totalBeforeTax;
 
   const paymentSummaryHTML=`
     <div class="payment-summary-title">
@@ -55,10 +57,15 @@ export default function renderPaymentSummary(){
       <div class="payment-summary-money">$${formatCurrency(total)}</div>
     </div>
 
-    <button class="place-order-button button-primary">
-      Place your order
-    </button>
+    <a href="orders.html">
+      <button class="place-order-button button-primary js-place-order-button">
+        Place your order
+      </button>
+    </a>
   `;
   
   document.querySelector('.js-payment-summary').innerHTML=paymentSummaryHTML;
+  document.querySelector('.js-place-order-button').addEventListener('click',()=>{
+    addToOrders(cart,total);
+  });
 };
