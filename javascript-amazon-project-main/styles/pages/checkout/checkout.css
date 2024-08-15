@@ -209,3 +209,46 @@
   margin-top: 11px;
   margin-bottom: 15px;
 }
+
+.view-products-button{
+  margin-top: 11px;
+  padding: 8px;
+  width: 130px;
+  height: 40px;
+  font-size: 15px;
+  background-color: rgb(255, 216, 20);
+  border: none;
+  border-radius: 10px;
+  font-family: Roboto, Arial;
+  cursor: pointer;
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.16);
+}
+.view-products-button:hover{
+  background-color:rgb(243, 202, 0) ;
+}
+.view-products-button:active{
+  background-color: rgb(255, 216, 20);
+}
+.cart-is-empty-para{
+  font-family: roboto,ariral;
+}
+.empty-cart-button{
+  margin-left: 10px;
+  padding: 8px;
+  width: 120px;
+  height: 30px;
+  font-size: 15px;
+  background-color: rgb(255, 216, 20);
+  border: none;
+  border-radius: 10px;
+  font-family: Roboto, Arial;
+  cursor: pointer;
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.16);
+  align-items: center;
+}
+.empty-cart-button:hover{
+  background-color:rgb(243, 202, 0) ;
+}
+.empty-cart-button:active{
+  background-color: rgb(255, 216, 20);
+}

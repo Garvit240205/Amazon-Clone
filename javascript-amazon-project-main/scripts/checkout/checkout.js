@@ -123,6 +123,9 @@ function deliveryOptionsGeneration(product,cartItem){
   return radioHTML;
 };
 
+if(cartHTML.length===0){
+  cartHTML+='<p class="cart-is-empty-para">Your cart is empty.</p> <a href="amazon.html"><button class="view-products-button">View Products</button></a>';
+}
 document.querySelector('.js-order-summary').innerHTML=cartHTML;
 renderPaymentSummary();
 renderCheckoutItemsNumber(cart)
@@ -165,7 +168,7 @@ function emptyCart(){
   document.querySelector('.js-empty-cart-button')
   .addEventListener('click',function(){
     localStorage.removeItem('cart');
-    cartHTML='';
+    cartHTML='<p class="cart-is-empty-para">Your cart is empty.</p> <a href="amazon.html"><button class="view-products-button">View Products</button></a>';
     document.querySelector('.js-order-summary').innerHTML=cartHTML;
     cart.length = 0;
     renderPaymentSummary();
@@ -186,6 +189,10 @@ function deleteFromCart(productId){
   });
   
   document.querySelector(`.js-cart-item-container-${productId}`).remove();//to remove that element from HTML
+  if(cart.length===0){
+    cartHTML='<p class="cart-is-empty-para">Your cart is empty.</p> <a href="amazon.html"><button class="view-products-button">View Products</button></a>';
+    document.querySelector('.js-order-summary').innerHTML=cartHTML;
+  }
   renderPaymentSummary();
   renderCheckoutItemsNumber(cart)
 };
