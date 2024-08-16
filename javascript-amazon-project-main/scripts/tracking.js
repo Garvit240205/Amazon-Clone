@@ -4,7 +4,7 @@ let progressHTML='';
 let product=JSON.parse(localStorage.getItem('matchingProduct'));
 let cart=JSON.parse(localStorage.getItem('cartMatching'));
 let dateFinal=dayjs(JSON.parse(localStorage.getItem('dateFinal')));
-// console.log(cart);
+console.log(cart);
 displayProduct(product,cart,dateFinal);
 export function displayProduct(product,cart,dateFinal){
     const today=dayjs();
