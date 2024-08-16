@@ -67,5 +67,9 @@ export default function renderPaymentSummary(){
   document.querySelector('.js-payment-summary').innerHTML=paymentSummaryHTML;
   document.querySelector('.js-place-order-button').addEventListener('click',()=>{
     addToOrders(cart,total);
+    localStorage.removeItem('cart');
+    cart.length = 0;
+    document.querySelector('.js-cart-quantity').innerHTML=0;
+    saveToStorage();
   });
 };

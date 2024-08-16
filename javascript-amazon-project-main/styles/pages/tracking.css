@@ -79,3 +79,21 @@
   border-radius: 50px;
   width: 50%;
 }
+.progress-bar-1 {
+  height: 100%;
+  background-color: green;
+  border-radius: 50px;
+  width: 0%;
+}
+.progress-bar-2 {
+  height: 100%;
+  background-color: green;
+  border-radius: 50px;
+  width: 50%;
+}
+.progress-bar-3 {
+  height: 100%;
+  background-color: green;
+  border-radius: 50px;
+  width: 100%;
+} 
