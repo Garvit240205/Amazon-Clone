@@ -1,0 +1,52 @@
+.amazon-image{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.sign-in-header{
+    border: 3px;
+    border-radius: 10px;
+    border-color: black;
+    border-style: solid;
+    width: 600px;
+    height: 300px;
+    margin-left: 400px;
+}
+.sign-in-write{
+    /* display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    font-size: 30px;
+    font-weight: bold;
+    font-family: "Amazon Ember", Arial, sans-serif;
+    padding: 10px 23px;
+} 
+.email-phone{
+    display: grid;
+    place-items: center;   
+}
+.button-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.search-box{
+    width: 100px;
+    height: 20px;
+}
+.terms-write{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.new-to-amazon-write{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-container-2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
