@@ -10,7 +10,7 @@ let ordersHTML='';
 let productsHTML='';
 let dateFinal=dayjs();
 let cntr=0;
-console.log(orders);
+// console.log(orders);
 for(let i=0;i<orders.length;i++){
   ordersHTML+=`
     <div class="order-container">
@@ -47,7 +47,7 @@ for(let i=0;i<orders.length;i++){
 
 function renderProductsForOrders(order,cntr){
   productsHTML='';
-  
+  // console.log(order);
   for(let i=0;i<order.cart.length;i++){
     let productId=order.cart[i].productId;
     let matchingProduct={};
@@ -66,14 +66,15 @@ function renderProductsForOrders(order,cntr){
     else toAdd=0;
     const after=today.add(toAdd,'days');
     const dateafter= after.format('dddd, MMMM D');
-    dateFinal=dateafter;
+    dateFinal=after;
+    // console.log(dateFinal);
     // console.log(matchingProduct);
     
     productsHTML+=`
     <div class="product-image-container">
       <img src="${matchingProduct.image}">
     </div>
-    <div class="product-details js-product-details" data-product-matching='${JSON.stringify(matchingProduct)}' data-cart-matching='${JSON.stringify(order.cart[i])}' data-order-id=${orders.orderId}>
+    <div class="product-details js-product-details" data-product-matching='${JSON.stringify(matchingProduct)}' data-cart-matching='${JSON.stringify(order.cart[i])}' data-order-id='${order.orderId}'>
       <div class="product-name">
         ${matchingProduct.name}
       </div>
@@ -83,7 +84,7 @@ function renderProductsForOrders(order,cntr){
       <div class="product-quantity">
         Quantity: ${order.cart[i].productQuantity}
       </div>
-      <button class="buy-again-button button-primary js-buy-again-button-${matchingProduct.id}">
+      <button class="buy-again-button button-primary js-buy-again-button-${order.orderId}" data-matching-product='${JSON.stringify(matchingProduct)}'>
         <img class="buy-again-icon" src="images/icons/buy-again.png">
         <span class="buy-again-message">Buy it again</span>
       </button>
@@ -118,34 +119,26 @@ function updateCartQuant(){
 cntr=0;
 // console.log(ordersHTML);
 document.querySelectorAll('.order-details-grid').forEach((items)=>{
-  let matchingProduct=JSON.parse(document.querySelector('.js-product-details').dataset.productMatching);
-  let cartMatching=JSON.parse(document.querySelector('.js-product-details').dataset.cartMatching);
-  let orderId=document.querySelector('.js-product-details').dataset.orderId;
-  
-  // console.log(items);
-  // document.querySelectorAll('.js-product-details').forEach((productItems)=>{
-  //   console.log(productItems);
-  //   productItems.querySelector(`.js-buy-again-button-${orderId}`).addEventListener('click',()=>{
-  //     matchingProduct=JSON.parse(productItems.dataset.productMatching);
-  //     cartMatching=JSON.parse(productItems.dataset.cartMatching);
-  //     // console.log(matchingProduct);
-  //     addToCart(matchingProduct.id,cartMatching.productQuantity);
-  //     updateCartQuant();
-  //   });
-  // });
-  // cntr++;
-  // console.log(items.querySelector('.js-track-package-button').dataset.dateFinal);
+
+  let orderId=items.querySelector('.js-product-details').dataset.orderId;
+  items.querySelectorAll(`.js-buy-again-button-${orderId}`).forEach((singleButton)=>{
+    singleButton.addEventListener('click',()=>{
+      console.log(singleButton.dataset.matchingProduct);
+      let matchingProduct=JSON.parse(singleButton.dataset.matchingProduct);
+      addToCart(matchingProduct.id,1);
+      updateCartQuant();
+    });
+  });
+
   items.querySelectorAll('.js-track-package-button').forEach((button)=>{
     button.addEventListener('click',()=>{
-      let dateFinal=button.dataset.dateFinal;
-      matchingProduct=JSON.parse(button.dataset.productMatching);
-      cartMatching=JSON.parse(button.dataset.cartMatching);
-      // console.log(dateFinal);
+      let dateFinal=dayjs(button.dataset.dateFinal);
+      let matchingProduct=JSON.parse(button.dataset.productMatching);
+      let cartMatching=JSON.parse(button.dataset.cartMatching);
       // console.log(cartMatching);
       localStorage.setItem('matchingProduct',JSON.stringify(matchingProduct));
       localStorage.setItem('cartMatching',JSON.stringify(cartMatching));
       localStorage.setItem('dateFinal',JSON.stringify(dateFinal));
-      // displayProduct(matchingProduct,cartMatching,dateFinal);
     });
   });
 });
