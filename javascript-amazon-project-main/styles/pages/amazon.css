@@ -144,6 +144,17 @@
   opacity: 0;
 }
 
+.added-to-cart-display {
+  color: rgb(6, 125, 98);
+  font-size: 16px;
+
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+
+  opacity: 1;
+}
+
 .added-to-cart img {
   height: 20px;
   margin-right: 5px;
