@@ -2,51 +2,147 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    padding : 19px;
+    margin-left: 101px;
 }
 .sign-in-header{
-    border: 3px;
-    border-radius: 10px;
-    border-color: black;
+    font-family: "Amazon Ember", Arial, sans-serif;
+    border: 1px;
+    border-radius: 13px;
+    border-color: grey;
     border-style: solid;
-    width: 600px;
-    height: 300px;
-    margin-left: 400px;
+    width: 393px;
+    height: 450px;
+    margin-left: 565px;
+    padding:18px;
 }
 .sign-in-write{
+    font-family: "Amazon Ember", Arial, sans-serif;
     /* display: flex;
     align-items: center;
     /* justify-content: center; */
-    font-size: 30px;
-    font-weight: bold;
-    font-family: "Amazon Ember", Arial, sans-serif;
+    font-size: 35px;
+    /* font-weight: bold; */
+    
     padding: 10px 23px;
 } 
 .email-phone{
+    /* display: grid;
+    place-items: center;  */
+    padding: 4px 2px 0px;
+    margin: 2px 23px;
+    font-size: 16px;
+    font-family: "Amazon Ember", Arial, sans-serif;
+}
+.main{
+    /* padding: 10px 23px; */
+}
+
+.email-phone2{
     display: grid;
-    place-items: center;   
+    grid-template-columns: 1fr 1fr; /* Two equal-width columns */
+    align-items: center;
+    /* place-items: center;  */ 
+    padding: 10px 23px;
+    font-size: 16px;
+    font-family: "Amazon Ember", Arial, sans-serif;
 }
 .button-container{
-    display: flex;
+    /* display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center; */
+    padding: 10px 23px;
+    
+    
+    
+}
+.continue-button{
+    /* width:300px; */
+    width: 351px;
+    height: 36px;
+    margin: 7px 0px;
+    background: #f0c14b;
+    border-color: #a88734 #9c7e31 #846a29;
+    font-family: "Amazon Ember", Arial, sans-serif;
+    border-radius:10px;
+    border: none;
+    font-weight: bold;
+    color: #111;
+    cursor: pointer;
 }
 .search-box{
-    width: 100px;
-    height: 20px;
+    width: 345px;
+    height: 34px;
+    margin: 7px 23px;
+    border-radius: 3px;
+    border: 1px solid gray;
+    box-shadow: #a88734;
+    border: 1px solid #a6a6a6;
+    border-top-color: #949494;
+    border-radius: 3px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, .5), 0 1px 0 rgba(0, 0, 0, .07) inset;
+    outline: 0;
 }
 .terms-write{
-    display: flex;
+    /* display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center; */
+    padding: 10px 23px;
+    font-size: 15px !important;
+    /* line-height: 1.5 !important; */
 }
 .new-to-amazon-write{
-    display: flex;
+    /* display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center; */
+    padding: 10px 23px;
+    color: gray;
 }
 
 .button-container-2{
-    display: flex;
+    /* display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center; */
+    padding: 10px 23px;
+    
 }
+.create-button{
+    border-radius: 7px;
+    background-color: white;
+    border: 1px solid grey;
+    width: 345px;
+    height: 34px;
+    /* background: #e7e9ec; */
+    border-radius: 3px;
+    border-color: #adb1b8 #a2a6ac #8d9096;
+    border-style: solid;
+    border-width: 1px;
+    cursor: pointer;
+    display: inline-block;
+    padding: 0;
+    text-align: center;
+    text-decoration: none !important;
+    vertical-align: middle;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+}
+footer{
+    width: 100vw;
+    height: 20vh;
+    margin: 30px;
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    
+}
+footer ul li{
+    
+    list-style-type: none; /* Remove bullet points */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+    display: inline; 
+    padding: 12px;
+}
+
