@@ -9,9 +9,10 @@ displayProduct(product,cart,dateFinal);
 export function displayProduct(product,cart,dateFinal){
     const today=dayjs();
     let option=1;
-    // console.log(today);
+    console.log(today);
+    console.log(dateFinal);
     if (today.isAfter(dayjs(dateFinal),'day')) option = 2;
-    else if (today.isSame(dayjs(dateFinal), 'day')) option = 3;
+    else if (today.isSame(dayjs(dateFinal), 'day') || today.isBefore(dayjs(dateFinal),'day')) option = 3;
 
     const bar=document.querySelector('.js-progress-bar')
     bar.classList.remove('progress-bar');

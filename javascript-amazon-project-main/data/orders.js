@@ -14,7 +14,7 @@ function generateUUID() {
 export function addToOrders(cart,total){
   orders.push({
     orderId: generateUUID(),
-    orderPlaced: dayjs().format('MMMM D'),
+    orderPlaced: dayjs(),
     total,
     cart
   })

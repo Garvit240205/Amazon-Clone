@@ -8,8 +8,9 @@ import { cart, saveToStorage,addToCart } from "../data/cart.js";
 updateCartQuant();
 let ordersHTML='';
 let productsHTML='';
-let dateFinal;
-// console.log(orders);
+let dateFinal=dayjs();
+let cntr=0;
+console.log(orders);
 for(let i=0;i<orders.length;i++){
   ordersHTML+=`
     <div class="order-container">
@@ -17,7 +18,7 @@ for(let i=0;i<orders.length;i++){
         <div class="order-header-left-section">
           <div class="order-date">
             <div class="order-header-label">Order Placed:</div>
-            <div>${orders[i].orderPlaced}</div>
+            <div>${dayjs(orders[i].orderPlaced).format('dddd, MMMM D')}</div>
           </div>
           <div class="order-total">
             <div class="order-header-label">Total:</div>
@@ -35,15 +36,18 @@ for(let i=0;i<orders.length;i++){
         
 
       
-      ${renderProductsForOrders(orders[i])}
+      ${renderProductsForOrders(orders[i],cntr)}
       </div>
     </div>
   `;
+  cntr++;
+  // console.log(cntr);
 }
 
 
-function renderProductsForOrders(order){
+function renderProductsForOrders(order,cntr){
   productsHTML='';
+  
   for(let i=0;i<order.cart.length;i++){
     let productId=order.cart[i].productId;
     let matchingProduct={};
@@ -54,21 +58,22 @@ function renderProductsForOrders(order){
       }
     }
 
-    const today=dayjs();
+    const today= dayjs(order.orderPlaced);
+    // console.log(today);
     let toAdd;
     if(order.cart[i].deliveryId===1) toAdd=7;
     else if(order.cart[i].deliveryId===2) toAdd=3;
     else toAdd=0;
     const after=today.add(toAdd,'days');
     const dateafter= after.format('dddd, MMMM D');
-    dateFinal=after;
+    dateFinal=dateafter;
     // console.log(matchingProduct);
     
     productsHTML+=`
     <div class="product-image-container">
       <img src="${matchingProduct.image}">
     </div>
-    <div class="product-details js-product-details" data-product-matching='${JSON.stringify(matchingProduct)}' data-cart-matching='${JSON.stringify(order.cart[i])}'>
+    <div class="product-details js-product-details" data-product-matching='${JSON.stringify(matchingProduct)}' data-cart-matching='${JSON.stringify(order.cart[i])}' data-order-id=${orders.orderId}>
       <div class="product-name">
         ${matchingProduct.name}
       </div>
@@ -78,7 +83,7 @@ function renderProductsForOrders(order){
       <div class="product-quantity">
         Quantity: ${order.cart[i].productQuantity}
       </div>
-      <button class="buy-again-button button-primary js-buy-again-button">
+      <button class="buy-again-button button-primary js-buy-again-button-${matchingProduct.id}">
         <img class="buy-again-icon" src="images/icons/buy-again.png">
         <span class="buy-again-message">Buy it again</span>
       </button>
@@ -110,18 +115,25 @@ function updateCartQuant(){
   document.querySelector('.js-cart-quantity').innerHTML=cartQuantity;
 }
 
-
+cntr=0;
+// console.log(ordersHTML);
 document.querySelectorAll('.order-details-grid').forEach((items)=>{
   let matchingProduct=JSON.parse(document.querySelector('.js-product-details').dataset.productMatching);
   let cartMatching=JSON.parse(document.querySelector('.js-product-details').dataset.cartMatching);
-  document.querySelectorAll('.js-product-details').forEach((items)=>{
-    items.querySelector(`.js-buy-again-button`).addEventListener('click',()=>{
-      matchingProduct=JSON.parse(items.dataset.productMatching);
-      cartMatching=JSON.parse(items.dataset.cartMatching);
-      addToCart(matchingProduct.id,cartMatching.productQuantity);
-      updateCartQuant();
-    });
-  });
+  let orderId=document.querySelector('.js-product-details').dataset.orderId;
+  
+  // console.log(items);
+  // document.querySelectorAll('.js-product-details').forEach((productItems)=>{
+  //   console.log(productItems);
+  //   productItems.querySelector(`.js-buy-again-button-${orderId}`).addEventListener('click',()=>{
+  //     matchingProduct=JSON.parse(productItems.dataset.productMatching);
+  //     cartMatching=JSON.parse(productItems.dataset.cartMatching);
+  //     // console.log(matchingProduct);
+  //     addToCart(matchingProduct.id,cartMatching.productQuantity);
+  //     updateCartQuant();
+  //   });
+  // });
+  // cntr++;
   // console.log(items.querySelector('.js-track-package-button').dataset.dateFinal);
   items.querySelectorAll('.js-track-package-button').forEach((button)=>{
     button.addEventListener('click',()=>{
@@ -137,3 +149,10 @@ document.querySelectorAll('.order-details-grid').forEach((items)=>{
     });
   });
 });
+
+// items.querySelector('.js-product-details').addEventListener('click',()=>{
+//   matchingProduct=JSON.parse(items.querySelector('.js-product-details').dataset.productMatching);
+//   cartMatching=JSON.parse(items.querySelector('.js-product-details').dataset.cartMatching);
+//   addToCart(matchingProduct.id,cartMatching.productQuantity);
+//   updateCartQuant();
+// });
