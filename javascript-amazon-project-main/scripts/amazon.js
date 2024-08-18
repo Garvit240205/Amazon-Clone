@@ -47,7 +47,7 @@ for(let i=0;i<products.length;i++){
 
       <div class="product-spacer"></div>
 
-      <div class="added-to-cart">
+      <div class="added-to-cart js-added-to-cart-${products[i].id}">
         <img src="images/icons/checkmark.png">
         Added
       </div>
@@ -158,7 +158,7 @@ function renderSearchInput(){
   
         <div class="product-spacer"></div>
   
-        <div class="added-to-cart">
+        <div class="added-to-cart js-added-to-cart-${matchingProducts[i].id}">
           <img src="images/icons/checkmark.png">
           Added
         </div>
@@ -183,3 +183,20 @@ document.querySelector('.js-search-bar').addEventListener('keydown',(event)=>{ /
     renderSearchInput();
   }
 });
+
+// console.log(productsHTML);
+async function waiting(items) {
+  await new Promise(resolve => setTimeout(resolve, 1000));
+  document.querySelector(`.js-added-to-cart-${items.dataset.productId}`).classList.remove('added-to-cart-display');
+}
+
+function addToCartAnimation() {
+  document.querySelectorAll('.js-add-to-cart').forEach((items) => {
+    items.addEventListener('click', () => {
+      document.querySelector(`.js-added-to-cart-${items.dataset.productId}`).classList.add('added-to-cart-display');
+      waiting(items);
+    });
+  });
+}
+
+addToCartAnimation();

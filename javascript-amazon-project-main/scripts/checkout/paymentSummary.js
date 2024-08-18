@@ -1,4 +1,4 @@
-import {cart} from '../../data/cart.js'
+import {cart,saveToStorage} from '../../data/cart.js'
 import { products } from '../../data/products.js';
 import { delivery } from '../delivery.js';
 import { formatCurrency } from '../utils/money.js';
@@ -56,7 +56,6 @@ export default function renderPaymentSummary(){
       <div>Order total:</div>
       <div class="payment-summary-money">$${formatCurrency(total)}</div>
     </div>
-
     <a href="orders.html">
       <button class="place-order-button button-primary js-place-order-button">
         Place your order
@@ -67,9 +66,10 @@ export default function renderPaymentSummary(){
   document.querySelector('.js-payment-summary').innerHTML=paymentSummaryHTML;
   document.querySelector('.js-place-order-button').addEventListener('click',()=>{
     addToOrders(cart,total);
+    // console.log(orders);
     localStorage.removeItem('cart');
     cart.length = 0;
-    document.querySelector('.js-cart-quantity').innerHTML=0;
+    document.querySelector('.js-return-to-home-link').innerHTML=`0 items`;
     saveToStorage();
   });
 };

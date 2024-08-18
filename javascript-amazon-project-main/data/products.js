@@ -153,7 +153,7 @@ export const products = [
   {
     id: "5968897c-4d27-4872-89f6-5bcb052746d7",
     image: "images/products/women-chiffon-beachwear-coverup-black.jpg",
-    name: "Women's Chiffon Beachwear Cover Up - Black",
+    name: `Womens Chiffon Beachwear Cover Up - Black`,
     rating: {
       stars: 4.5,
       count: 235
@@ -186,7 +186,7 @@ export const products = [
   {
     id: "04701903-bc79-49c6-bc11-1af7e3651358",
     image: "images/products/women-beach-sandals.jpg",
-    name: "Women's Two Strap Buckle Sandals - Tan",
+    name: "Womens Two Strap Buckle Sandals - Tan",
     rating: {
       stars: 4.5,
       count: 562
@@ -218,7 +218,7 @@ export const products = [
   {
     id: "82bb68d7-ebc9-476a-989c-c78a40ee5cd9",
     image: "images/products/men-slim-fit-summer-shorts-gray.jpg",
-    name: "Men's Slim-Fit Summer Shorts",
+    name: "Mens Slim-Fit Summer Shorts",
     rating: {
       stars: 4,
       count: 160
@@ -296,7 +296,7 @@ export const products = [
   {
     id: "b0f17cc5-8b40-4ca5-9142-b61fe3d98c85",
     image: "images/products/women-stretch-popover-hoodie-black.jpg",
-    name: "Women's Stretch Popover Hoodie",
+    name: "Womens Stretch Popover Hoodie",
     rating: {
       stars: 4.5,
       count: 2465
@@ -330,7 +330,7 @@ export const products = [
   {
     id: "4f4fbcc2-4e72-45cc-935c-9e13d79cc57f",
     image: "images/products/women-knit-ballet-flat-black.jpg",
-    name: "Women's Knit Ballet Flat",
+    name: "Womens Knit Ballet Flat",
     rating: {
       stars: 4,
       count: 326
@@ -346,7 +346,7 @@ export const products = [
   {
     id: "8b5a2ee1-6055-422a-a666-b34ba28b76d4",
     image: "images/products/men-golf-polo-t-shirt-blue.jpg",
-    name: "Men's Regular-Fit Quick-Dry Golf Polo Shirt",
+    name: "Mens Regular-Fit Quick-Dry Golf Polo Shirt",
     rating: {
       stars: 4.5,
       count: 2556
@@ -397,7 +397,7 @@ export const products = [
   {
     id: "d2785924-743d-49b3-8f03-ec258e640503",
     image: "images/products/women-chunky-beanie-gray.webp",
-    name: "Women's Chunky Cable Beanie - Gray",
+    name: "Womens Chunky Cable Beanie - Gray",
     rating: {
       stars: 5,
       count: 83
@@ -415,7 +415,7 @@ export const products = [
   {
     id: "ee1f7c56-f977-40a4-9642-12ba5072e2b0",
     image: "images/products/men-chino-pants-beige.jpg",
-    name: "Men's Classic-fit Pleated Chino Pants",
+    name: "Mens Classic-fit Pleated Chino Pants",
     rating: {
       stars: 4.5,
       count: 9017
@@ -430,7 +430,7 @@ export const products = [
   {
     id: "1c079479-8586-494f-ab53-219325432536",
     image: "images/products/men-athletic-shoes-green.jpg",
-    name: "Men's Athletic Sneaker",
+    name: "Mens Athletic Sneaker",
     rating: {
       stars: 4,
       count: 229
@@ -446,7 +446,7 @@ export const products = [
   {
     id: "4df68c27-fd59-4a6a-bbd1-e754ddb6d53c",
     image: "images/products/men-navigator-sunglasses-brown.jpg",
-    name: "Men's Navigator Sunglasses Pilot",
+    name: "Mens Navigator Sunglasses Pilot",
     rating: {
       stars: 3.5,
       count: 42
@@ -492,7 +492,7 @@ export const products = [
   {
     id: "a45cfa0a-66d6-4dc7-9475-e2b01595f7d7",
     image: "images/products/women-french-terry-fleece-jogger-camo.jpg",
-    name: "Women's Fleece Jogger Sweatpant",
+    name: "Womens Fleece Jogger Sweatpant",
     rating: {
       stars: 4.5,
       count: 248
@@ -644,7 +644,7 @@ export const products = [
   {
     id: "bc2847e9-5323-403f-b7cf-57fde044a955",
     image: "images/products/men-cozy-fleece-zip-up-hoodie-red.jpg",
-    name: "Men's Full-Zip Hooded Fleece Sweatshirt",
+    name: "Mens Full-Zip Hooded Fleece Sweatshirt",
     rating: {
       stars: 4.5,
       count: 3157
