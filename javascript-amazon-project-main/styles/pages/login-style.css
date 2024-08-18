@@ -146,3 +146,20 @@ footer ul li{
     padding: 12px;
 }
 
+.abv-last{
+    height: 37px;
+    /* border: 1px solid; */
+    display: inline;
+    position: relative;
+    left: 230px;
+}
+
+.help{
+    width: 35vw;
+    height: 8vh;
+    position: relative;
+    left: -42px;
+    /* border: 1px solid black; */
+    top: 40px;
+    font-size: 14px;
+}

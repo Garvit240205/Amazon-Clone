@@ -21,12 +21,20 @@
             <div class="search-box-div">
                 <input class="search-box" type="text" id="name" placeholder="First and Last name" />
             </div>
+            <div class="note">
+                <!-- <img src="images/icons/i-icon.png" alt="" height="20px" style="    top: 4px;position: relative;"> -->
+                <p id="name-warning" style="display: inline;color: red;visibility: hidden;">Please write your name.   </p>
+            </div>
             <div class="email-phone">
                 <div class="emailphone-write"><b> Email</b></div>
                 
             </div>
             <div class="search-box-div">
-                <input class="search-box" type="search-box">
+                <input class="search-box" type="search-box" id="email">
+            </div>
+            <div class="note">
+                <!-- <img src="images/icons/i-icon.png" alt="" height="20px" style="    top: 4px;position: relative;"> -->
+                <p id="email-warning" style="display: inline;color: red;visibility: hidden;">Please write your email.   </p>
             </div>
             <div class="main">
             <div class="email-phone2">
@@ -36,10 +44,23 @@
             </div>
             
             <div class="search-box-div">
-                <input class="search-box" type="text" id="name" placeholder="At least 6 characters" />
+                <input class="search-box" type="text" id="password" placeholder="At least 6 characters" />
             
         </div>
         <div class="note">
+            <!-- <img src="images/icons/i-icon.png" alt="" height="20px" style="    top: 4px;position: relative;"> -->
+            <p id="pass-warning" style="    display: inline;
+            color: red;
+            visibility: hidden;
+            left: 22px;
+            position: relative;
+            display: block;
+            height: 0px;
+            margin: 4px;
+            top: -17px;
+        ">Please write your password.   </p>
+        </div>
+        <div class="note1">
             <img src="images/icons/i-icon.png" alt="" height="20px" style="    top: 4px;position: relative;">
             <p style="display: inline;">Passwords must be atleast 6 characters.   </p>
         </div>
@@ -48,11 +69,15 @@
             
         </div>
         <div class="search-box-div">
-            <input class="search-box" type="search-box">
+            <input class="search-box" type="text" id="password_again">
         </div>
     </div>
+    <div class="note">
+        <!-- <img src="images/icons/i-icon.png" alt="" height="20px" style="    top: 4px;position: relative;"> -->
+        <p id="warning" style="display: inline;color: red;visibility: hidden;">Please re-type your password.   </p>
+    </div>
             <div class="button-container">
-                <button class="continue-button"> Create your amazon account</button>
+                <button class="continue-button" id="create"> Create your amazon account</button>
                 
             </div>
             
@@ -76,7 +101,7 @@
         </div>
            <div class="last">
             <div class="help">
-                <p> © 1996-2024, Amazon.com, Inc. or its affiliates</p>
+                <p> ©Aditya 1996-2024, Amazon.com, Inc. or its affiliates</p>
                 
             </div>
             <div class="info">
@@ -85,5 +110,6 @@
            </div> 
          
         </footer>
+        <script src="scripts/register.js"></script>
     </body>
 </html>

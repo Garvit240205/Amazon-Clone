@@ -12,7 +12,7 @@
     border-color: grey;
     border-style: solid;
     width: 393px;
-    height: 619px;
+    height: 701px;
     margin-left: 565px;
     padding:18px;
 }
@@ -44,6 +44,13 @@ input::placeholder {
     font-size: 14px;
     margin: 23px;
     display: inline;
+}
+.note1{
+    font-size: 14px;
+    margin: 23px;
+    display: inline;
+    position: relative;
+    left: -25px;
 }
 .email-phone2{
     display: grid;
