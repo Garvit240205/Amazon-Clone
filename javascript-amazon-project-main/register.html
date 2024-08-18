@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
+    
     <head>
         <title>Login Page</title>
-        <link rel="stylesheet" href="styles/pages/login-style.css">
+        <link rel="stylesheet" href="styles/pages/register-style.css">
     </head>
     <body>
         <div class="amazon-image">
@@ -14,14 +15,14 @@
                 Create Account
             </div>
             <div class="email-phone">
-                <div class="emailphone-write"><b> Email or mobile phone number</b></div>
+                <div class="emailphone-write" ><b> Your name</b></div>
                 
             </div>
             <div class="search-box-div">
-                <input class="search-box" type="search-box">
+                <input class="search-box" type="text" id="name" placeholder="First and Last name" />
             </div>
             <div class="email-phone">
-                <div class="emailphone-write"><b> Email or mobile phone number</b></div>
+                <div class="emailphone-write"><b> Email</b></div>
                 
             </div>
             <div class="search-box-div">
@@ -30,15 +31,20 @@
             <div class="main">
             <div class="email-phone2">
                 <div class="pass"> <b> Password </b> </div>
-                <div class="for"><b><a href="">Forget Password?</a></b></div> 
+                
+                <!-- <div class="for"><b><a href="">Forget Password?</a></b></div>  -->
             </div>
             
             <div class="search-box-div">
-                <input class="search-box" type="search-box">
+                <input class="search-box" type="text" id="name" placeholder="At least 6 characters" />
             
         </div>
+        <div class="note">
+            <img src="images/icons/i-icon.png" alt="" height="20px" style="    top: 4px;position: relative;">
+            <p style="display: inline;">Passwords must be atleast 6 characters.   </p>
+        </div>
         <div class="email-phone">
-            <div class="emailphone-write"><b> Email or mobile phone number</b></div>
+            <div class="emailphone-write"><b> Password again</b></div>
             
         </div>
         <div class="search-box-div">
@@ -46,15 +52,18 @@
         </div>
     </div>
             <div class="button-container">
-                <button class="continue-button"> Sign-In</button>
+                <button class="continue-button"> Create your amazon account</button>
                 
             </div>
             
-            <div class="terms-write">By continuing, you agree to Garvit's  <a href="">Conditions of Use</a>  and <a href="">Privacy Notice</a> .</div>
+            <div class="terms-write">By creating an account or logging in, you agree to Garvit's  <a href="">Conditions of Use</a>  and <a href="">Privacy Notice</a> .</div>
 
-            <div class="new-to-amazon-write">---------------------New to Amazon?------------------</div>
+            <!-- <div class="new-to-amazon-write">---------------------New to Amazon?------------------</div>
             <div class="button-container-2">
                 <button class="create-button">Create your Amazon account</button>
+            </div> -->
+            <div class="sign-in">
+                <p>Already have an account? <a href="login.html">Sign in</a></p>
             </div>
         </div>
         <footer>
@@ -65,10 +74,16 @@
                 <li><a href="">Help</a></li>
             </ul>
         </div>
-           <!-- <div class="last">
-            <p>Copyright 2020 Aditya</p>
-           </div> -->
-            <!-- <br> © 1996-2024, Amazon.com, Inc. or its affiliates -->
+           <div class="last">
+            <div class="help">
+                <p> © 1996-2024, Amazon.com, Inc. or its affiliates</p>
+                
+            </div>
+            <div class="info">
+                
+            </div>
+           </div> 
+         
         </footer>
     </body>
 </html>
