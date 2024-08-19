@@ -118,6 +118,7 @@ function updateCartQuant(){
 
 cntr=0;
 // console.log(ordersHTML);
+let currUserMail=JSON.parse(localStorage.getItem('curruser'));
 document.querySelectorAll('.order-details-grid').forEach((items)=>{
 
   let orderId=items.querySelector('.js-product-details').dataset.orderId;
@@ -136,9 +137,9 @@ document.querySelectorAll('.order-details-grid').forEach((items)=>{
       let matchingProduct=JSON.parse(button.dataset.productMatching);
       let cartMatching=JSON.parse(button.dataset.cartMatching);
       // console.log(cartMatching);
-      localStorage.setItem('matchingProduct',JSON.stringify(matchingProduct));
-      localStorage.setItem('cartMatching',JSON.stringify(cartMatching));
-      localStorage.setItem('dateFinal',JSON.stringify(dateFinal));
+      localStorage.setItem(`${currUserMail}-matchingProduct`,JSON.stringify(matchingProduct));
+      localStorage.setItem(`${currUserMail}-cartMatching`,JSON.stringify(cartMatching));
+      localStorage.setItem(`${currUserMail}-dateFinal`,JSON.stringify(dateFinal));
     });
   });
 });

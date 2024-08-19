@@ -1,6 +1,8 @@
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 
-export let orders=JSON.parse(localStorage.getItem('orders'))||[];
+let currUserMail=JSON.parse(localStorage.getItem('curruser'));
+export let orders=JSON.parse(localStorage.getItem(`${currUserMail}-orders`))||[];
+
 
 
 function generateUUID() {
@@ -18,6 +20,6 @@ export function addToOrders(cart,total){
     total,
     cart
   })
-  localStorage.setItem('orders',JSON.stringify(orders));
+  localStorage.setItem(`${currUserMail}-orders`,JSON.stringify(orders));
 };
 

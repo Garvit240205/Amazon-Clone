@@ -1,7 +1,7 @@
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 import { cart as mainCart }  from '../data/cart.js';
 
-
+let currUserMail=JSON.parse(localStorage.getItem('curruser'));
 function updateCartQuant(){
     let cartQuantity=0;
   
@@ -14,10 +14,10 @@ function updateCartQuant(){
 updateCartQuant();
 
 let progressHTML='';
-let product=JSON.parse(localStorage.getItem('matchingProduct'));
-let cart=JSON.parse(localStorage.getItem('cartMatching'));
-let dateFinal=dayjs(JSON.parse(localStorage.getItem('dateFinal')));
-console.log(cart);
+let product=JSON.parse(localStorage.getItem(`${currUserMail}-matchingProduct`));
+let cart=JSON.parse(localStorage.getItem(`${currUserMail}-cartMatching`));
+let dateFinal=dayjs(JSON.parse(localStorage.getItem(`${currUserMail}-dateFinal`)));
+// console.log(cart);
 displayProduct(product,cart,dateFinal);
 export function displayProduct(product,cart,dateFinal){
     const today=dayjs();

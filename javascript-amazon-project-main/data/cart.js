@@ -1,4 +1,6 @@
-export let cart = JSON.parse(localStorage.getItem('cart')) || [];
+let currUserMail=JSON.parse(localStorage.getItem('curruser'));
+export let cart = JSON.parse(localStorage.getItem(`${currUserMail}-cart`)) || [];
+
 
 export function addToCart(productId,productQuantity){
   let flag=1;
@@ -11,11 +13,11 @@ export function addToCart(productId,productQuantity){
   }
   if(flag===1) cart.push({productId,productQuantity,deliveryId: 1});
 
-  localStorage.setItem('cart', JSON.stringify(cart));
+  localStorage.setItem(`${currUserMail}-cart`, JSON.stringify(cart));
 }
 
 export function saveToStorage(){
-  localStorage.setItem('cart',JSON.stringify(cart));
+  localStorage.setItem(`${currUserMail}-cart`,JSON.stringify(cart));
 } 
 
 // export let cart={ //creating a cart object instead
