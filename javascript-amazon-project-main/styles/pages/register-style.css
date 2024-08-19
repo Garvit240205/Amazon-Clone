@@ -12,7 +12,7 @@
     border-color: grey;
     border-style: solid;
     width: 393px;
-    height: 450px;
+    height: 701px;
     margin-left: 565px;
     padding:18px;
 }
@@ -26,18 +26,32 @@
     
     padding: 10px 23px;
 } 
+input::placeholder {
+    font-size: 16px; /* Increase the font size of the placeholder */
+    padding-left: 10px; /* Move the placeholder slightly to the right */
+    color: gray; /* Optional: Change the placeholder text color */
+}
+
 .email-phone{
     /* display: grid;
     place-items: center;  */
-    padding: 4px 2px 0px;
+    padding: 8px 2px 0px;
     margin: 2px 23px;
     font-size: 16px;
     font-family: "Amazon Ember", Arial, sans-serif;
 }
-.main{
-    /* padding: 10px 23px; */
+.note{
+    font-size: 14px;
+    margin: 23px;
+    display: inline;
 }
-
+.note1{
+    font-size: 14px;
+    margin: 23px;
+    display: inline;
+    position: relative;
+    left: -25px;
+}
 .email-phone2{
     display: grid;
     grid-template-columns: 1fr 1fr; /* Two equal-width columns */
@@ -66,7 +80,7 @@
     font-family: "Amazon Ember", Arial, sans-serif;
     border-radius:10px;
     border: none;
-    font-weight: bold;
+    font-weight: 500;
     color: #111;
     cursor: pointer;
 }
@@ -144,8 +158,26 @@ footer ul li{
     margin: 0; 
     display: inline; 
     padding: 12px;
+    
 }
-
+.sign-in{
+    background-color:rgb(245, 245, 245);
+    display: flex;
+    margin: 0px;
+    width: 429px;
+    border: 0px solid grey;
+    position: relative;
+    height: 75px;
+    left: -18px;
+    top: 17px;
+    border-radius: 13px;
+}
+.sign-in p{
+    top: 21px;
+    display: inline;
+    position: relative;
+    left: 43px;
+}
 .abv-last{
     height: 37px;
     /* border: 1px solid; */
