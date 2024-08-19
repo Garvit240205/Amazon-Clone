@@ -14,24 +14,27 @@
                 Sign in
             </div>
             <div class="email-phone">
-                <div class="emailphone-write"><b> Email or mobile phone number</b></div>
+                <div class="emailphone-write"><b> Email</b></div>
                 
             </div>
             <div class="search-box-div">
-                <input class="search-box" type="search-box">
+                <input class="search-box js-email" type="search-box">
             </div>
+            <p id="email-warning-3" style="display: inline;color: red;visibility: hidden;margin-left: 23px;">User with this email is not registered.</p>
             <div class="main">
             <div class="email-phone2">
                 <div class="pass"> <b> Password </b> </div>
-                <div class="for"><b><a href="">Forget Password?</a></b></div> 
+                <div class="for"><b><a href="">Forgot Password?</a></b></div> 
             </div>
-            <div class="search-box-div">
-                <input class="search-box" type="search-box">
             
+            <div class="search-box-div">
+                <input class="search-box js-pass" type="search-box">
+            
+            </div>
+            <p id="warning-pass" style="display: inline;color: red;visibility: hidden;margin-left: 23px;">Please re-type your password.</p>
         </div>
-    </div>
             <div class="button-container">
-                <button class="continue-button"> Sign-In</button>
+                <button class="continue-button js-sign-in"> Sign-In</button>
                 
             </div>
             
@@ -42,7 +45,7 @@
                 <button class="create-button" onclick="window.location.href='register.html';" >Create your Amazon account</button>
             </div>
         </div>
-        <footer>
+        <footer class="footer-class">
             <div class="abv-last">
             <ul>
                 <li><a href="">Conditions Of Use</a></li>
@@ -61,4 +64,5 @@
             <!-- <br> © 1996-2024, Amazon.com, Inc. or its affiliates -->
         </footer>
     </body>
+    <script type="module" src="scripts/sign-in.js"></script>
 </html>

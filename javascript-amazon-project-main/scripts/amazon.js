@@ -6,6 +6,19 @@ let productsHTML='';
 
 updateCartQuant();//to initially update the cart quantity at home page
 
+let currUserMail=JSON.parse(localStorage.getItem('curruser'));
+let currUser;
+let emailArr = JSON.parse(localStorage.getItem('emailarr'))||[];
+let userNameArr = JSON.parse(localStorage.getItem('usernamearr'))||[];
+// console.log(currUserMail);
+for(let i=0;i<emailArr.length;i++){
+  if(emailArr[i]===currUserMail){
+    currUser=userNameArr[i];
+    break;
+  }
+}
+document.querySelector('.js-welcome').innerHTML=`Welcome, ${currUser}`;
+
 for(let i=0;i<products.length;i++){
   productsHTML+=`
     <div class="product-container js-product-container">

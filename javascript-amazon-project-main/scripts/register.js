@@ -1,6 +1,6 @@
-let username = [];
-let password = [];
-let email = [];
+let userNameArr = JSON.parse(localStorage.getItem('usernamearr'))||[];
+let passwordArr = JSON.parse(localStorage.getItem('passwordarr'))||[];
+let emailArr = JSON.parse(localStorage.getItem('emailarr'))||[];
 
 let get_name = document.getElementById('name');
 let get_email=document.getElementById('email');
@@ -71,11 +71,45 @@ bttn.addEventListener('click', () => {
         warning.innerText="Enter same password in both password field.";
         warning.style.visibility="visible";
     }
-    if(cnt===5){
-        window.location.href = 'login.html';
-    }
-    
+    // if(cnt===5){
+    //     window.location.href = 'login.html';
+    // }
 });
 
+document.querySelector('.js-create-account').addEventListener('click',()=>{
+    let userName=document.querySelector('.js-your-name').value;
+    let email=document.querySelector('.js-email').value;
+    let password=document.querySelector('.js-pass').value;
 
+    let password_again=document.querySelector('.js-pass-again').value;
+
+    let flag=0;
+    for(let i=0;i<emailArr.length;i++){
+        if(emailArr[i]===email){
+            flag=1;
+            break;
+        }
+    }
+    if(email===''){
+        let name_warning = document.getElementById('email-warning');
+        name_warning.style.visibility='visible';
+    }
+    else if(flag===1){
+        let name_warning = document.getElementById('email-warning-2');
+        name_warning.style.visibility='visible';
+    }
+    else if(password!==password_again){
+        let warning=document.getElementById('warning');
+        warning.style.visibility="visible";
+    }
+    else{
+        userNameArr.push(userName);
+        emailArr.push(email);
+        passwordArr.push(password);
+        localStorage.setItem('usernamearr',JSON.stringify(userNameArr));
+        localStorage.setItem('emailarr',JSON.stringify(emailArr));
+        localStorage.setItem('passwordarr',JSON.stringify(passwordArr));
+        window.location.href='login.html';
+    }
+});
 

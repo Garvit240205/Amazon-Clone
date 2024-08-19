@@ -16,7 +16,7 @@
 }
 
 .amazon-header-left-section {
-  width: 180px;
+  width: 80px;
 }
 
 @media (max-width: 800px) {
@@ -32,6 +32,18 @@
   cursor: pointer;
   text-decoration: none;
   border: 1px solid rgba(0, 0, 0, 0);
+}
+.log-out-link{
+  display: flex;
+  padding: 6px;
+  border-radius: 2px;
+  cursor: pointer;
+  text-decoration: none;
+  border: 1px solid rgba(0, 0, 0, 0);
+  color: white;
+}
+.log-out-link:hover{
+  border-color: white;
 }
 
 .header-link:hover {
@@ -105,6 +117,14 @@
 
 .orders-link {
   color: white;
+}
+
+.log-out-text{
+  display: flex;
+  font-size: 20px;
+  width: 80px;  
+  align-items: center;
+  justify-content: center;
 }
 
 .returns-text {

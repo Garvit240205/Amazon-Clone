@@ -3,7 +3,7 @@
     align-items: center;
     justify-content: center;
     padding : 19px;
-    margin-left: 101px;
+    /* margin-left: 101px; */
 }
 .sign-in-header{
     font-family: "Amazon Ember", Arial, sans-serif;
@@ -13,8 +13,12 @@
     border-style: solid;
     width: 393px;
     height: 701px;
-    margin-left: 565px;
+    /* margin-left: 565px; */
     padding:18px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 5%);
 }
 .sign-in-write{
     font-family: "Amazon Ember", Arial, sans-serif;
@@ -143,7 +147,7 @@ input::placeholder {
 }
 footer{
     width: 100vw;
-    height: 20vh;
+    height: 15vh;
     margin: 30px;
     background-color: whitesmoke;
     display: flex;
@@ -154,11 +158,10 @@ footer{
 footer ul li{
     
     list-style-type: none; 
-    padding: 0; 
-    margin: 0; 
+    /* padding: 0;  */
+    margin: 0;
     display: inline; 
     padding: 12px;
-    
 }
 .sign-in{
     background-color:rgb(245, 245, 245);
@@ -167,10 +170,16 @@ footer ul li{
     width: 429px;
     border: 0px solid grey;
     position: relative;
-    height: 75px;
+    height: 72px;
     left: -18px;
     top: 17px;
     border-radius: 13px;
+    justify-content: center;
+    align-items: center;
+}
+.already-write{
+    margin-right: 100px;
+    margin-bottom: 55px;
 }
 .sign-in p{
     top: 21px;
@@ -179,13 +188,17 @@ footer ul li{
     left: 43px;
 }
 .abv-last{
-    height: 37px;
+    height: 30px;
     /* border: 1px solid; */
-    display: inline;
+    display: flex;
     position: relative;
     left: 230px;
+    align-items: center;
+    justify-content: center;
 }
-
+.footer-class{
+    margin-top: 60px;
+}
 .help{
     width: 35vw;
     height: 8vh;

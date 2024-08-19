@@ -3,7 +3,7 @@
     align-items: center;
     justify-content: center;
     padding : 19px;
-    margin-left: 101px;
+    /* margin-left: 101px; */
 }
 .sign-in-header{
     font-family: "Amazon Ember", Arial, sans-serif;
@@ -12,9 +12,16 @@
     border-color: grey;
     border-style: solid;
     width: 393px;
-    height: 450px;
-    margin-left: 565px;
+    height: 480px;
+    /* margin-left: 565px; */
     padding:18px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 5%);
+}
+.for{
+    margin-left: 33px;
 }
 .sign-in-write{
     font-family: "Amazon Ember", Arial, sans-serif;
@@ -63,7 +70,7 @@
     margin: 7px 0px;
     background: #f0c14b;
     border-color: #a88734 #9c7e31 #846a29;
-    font-family: "Amazon Ember", Arial, sans-serif;
+    font-family: Arial, sans-serif;
     border-radius:10px;
     border: none;
     font-weight: bold;
@@ -129,7 +136,7 @@
 }
 footer{
     width: 100vw;
-    height: 20vh;
+    height: 15vh;
     margin: 30px;
     background-color: whitesmoke;
     display: flex;
@@ -140,14 +147,16 @@ footer{
 footer ul li{
     
     list-style-type: none; 
-    padding: 0; 
+    /* padding: 0;  */
     margin: 0; 
     display: inline; 
     padding: 12px;
 }
-
+.footer-class{
+    margin-top: 60px;
+}
 .abv-last{
-    height: 37px;
+    height: 30px;
     /* border: 1px solid; */
     display: inline;
     position: relative;
