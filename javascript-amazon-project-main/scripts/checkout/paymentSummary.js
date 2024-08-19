@@ -5,6 +5,7 @@ import { formatCurrency } from '../utils/money.js';
 import {orders,addToOrders} from '../../data/orders.js';
 
 let total=0;
+let currUserMail=JSON.parse(localStorage.getItem('curruser'));
 export default function renderPaymentSummary(){
   let product;
   let totalPrice=0;
@@ -67,7 +68,7 @@ export default function renderPaymentSummary(){
   document.querySelector('.js-place-order-button').addEventListener('click',()=>{
     addToOrders(cart,total);
     // console.log(orders);
-    localStorage.removeItem('cart');
+    localStorage.removeItem(`${currUserMail}-cart`);
     cart.length = 0;
     document.querySelector('.js-return-to-home-link').innerHTML=`0 items`;
     saveToStorage();

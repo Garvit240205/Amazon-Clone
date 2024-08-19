@@ -8,7 +8,7 @@ import renderPaymentSummary from './paymentSummary.js';
 
 let cartHTML='';
 
-
+let currUserMail=JSON.parse(localStorage.getItem('curruser'));
 for(let i=0;i<cart.length;i++){
 
   let product={};
@@ -168,7 +168,7 @@ setDeliveryDate();
 export function emptyCart(){
   document.querySelector('.js-empty-cart-button')
   .addEventListener('click',function(){
-    localStorage.removeItem('cart');
+    localStorage.removeItem(`${currUserMail}-cart`);
     cartHTML='<p class="cart-is-empty-para">Your cart is empty.</p> <a href="amazon.html"><button class="view-products-button">View Products</button></a>';
     document.querySelector('.js-order-summary').innerHTML=cartHTML;
     cart.length = 0;
